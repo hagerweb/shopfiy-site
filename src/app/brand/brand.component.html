@@ -1,0 +1,104 @@
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:wght@400;800&family=Pacifico&display=swap" rel="stylesheet">
+  </head>
+ 
+
+
+  
+
+  <div class="d-flex w-50 mx-auto  justify-content-center align-items-center gap-2 mt-4">
+    <input  [(ngModel)]="inputValue" placeholder="Search.." class="form-control form-control-sm my-3   rounded-5 ">
+    <div class="d-flex icon bg-main   justify-content-center align-items-center p-2">
+      <i class="fa-solid fa-camera-retro fs-5 text-white"></i>
+    </div>
+  </div>
+  
+   <!-- ------ Filter ------------------ -->
+                
+   <div class=" filter  rounded-2  mt-3 w-15 mx-auto  justify-content-center align-items-center">
+    <div class="d-flex justify-content-center ">
+     <div class="btn-group">
+         <button class="btn text-main btn-sm dropdown-toggle bg-main" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <i class="fa-solid fa-filter text-white"></i> <span class="text-white pacifico-regular">
+                 Filter
+             </span>
+         </button>
+         <ul class="dropdown-menu text-center h6 pacifico-regular text-main">
+           <li class="mt-2">Price</li>
+           <li class="mt-2">Brands</li>
+           <li class="mt-2" >Stores</li>
+         </ul>
+       </div>
+    </div>
+     
+   </div>
+   <!-- ------------------------------------------------ -->
+
+
+
+
+
+
+
+
+
+<section>
+    
+ <div class="container">
+    <div class="row g-5 mt-3">
+        <div *ngFor="let prodcut of products  | search:inputValue  | slice :17 :60" class="col-sm-6 col-md-4 col-lg-3 col-xl-2 ">
+            <div class ="prouduct h-100 pointer ">
+              
+             <div [routerLink]="['/usedprodcuttDetails', prodcut._id]">
+              <img class="w-100" [src]="prodcut.imageCover" [alt]="prodcut.title">
+              <h4  class=" text-main h5 main-f my-2"> {{prodcut.category.name}}</h4>
+              <h3 class="  sec-color text-center h6 dancing-script fw-bold mt-2 mb-3">{{prodcut.title | cuttext:3}} </h3>
+              
+              <div class="d-flex justify-content-between align-items-center px-2 mb-2 mt-4">
+                  <span class=" dancing-script text-main">{{prodcut.price | currency : "EGP"}}</span>
+
+                 
+                    <span>
+                      <i class="fa-solid fa-star text-main fs-6"></i> {{prodcut.ratingsAverage}}
+                    </span>
+                  
+              </div>
+             </div>
+
+
+                <!-- -----Check Out-------------- -->
+                <!-- <button class="btn w-100 text-center bg-main text-white pacifico-regular h6 mt-3"><i class="fa-solid fa-plus text-white"></i> Add To Cart</button>
+ -->
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <!-- ------------------- Plus ---------------  -->
+        <div class="d-flex iconPlus bg-main   justify-content-center align-items-center p-3">
+           
+          <i class="fa-solid fa-plus fs-4 text-white"></i>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+ </div>
+
+</section>
